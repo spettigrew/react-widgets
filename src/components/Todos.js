@@ -15,7 +15,7 @@ const initialTodo = {
 const initialTodoList = [
     {
         id: uuidv4(),
-        description: 'Make this todo list work',
+        description: 'My todo list',
         complete: false,
     },
 ]
@@ -66,6 +66,12 @@ const Todos = () => {
                 return todo;
             }))
     }
+
+    const handleClear = () => {
+        setTodos(
+        todos.filter(todo => todo.complete === false)
+        )}
+
     return (
         <div>
             <form
@@ -85,6 +91,11 @@ const Todos = () => {
                 >
                     Add Todo
         </button>
+                <button
+                    className={'clear-completed-btn'}
+                    onClick={() => handleClear()}>
+                    Clear Completed Todo
+                </button>
             </form>
             <div
                 className={'todo-list'}>
